@@ -21,10 +21,16 @@ func Solve() {
 	}
 
 	fmt.Printf("Part 1: %d\n", Part1(instructions))
+	fmt.Printf("Part 2: %d\n", Part2(instructions))
 }
 
 func Part1(instructions []string) int {
 	depth, horizontal := followInstructions(instructions)
+	return determineAnswer(depth, horizontal)
+}
+
+func Part2(instructions []string) int {
+	depth, horizontal := followInstructionsWithAim(instructions)
 	return determineAnswer(depth, horizontal)
 }
 
@@ -48,6 +54,10 @@ func followInstructions(instructions []string) (depth int, horizontal int) {
 	}
 
 	return depth, horizontal
+}
+
+func followInstructionsWithAim(instructions []string) (depth int, horizontal int) {
+	return
 }
 
 func getAmountFromInstruction(instruction []string) int {
