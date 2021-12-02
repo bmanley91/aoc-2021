@@ -1,7 +1,8 @@
-name: Pipeline
+name: Main
 
 on:
-  push
+  push:
+    branch: main
 
 jobs:
   build:
