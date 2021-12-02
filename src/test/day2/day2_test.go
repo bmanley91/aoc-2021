@@ -6,7 +6,7 @@ import (
 	"manley.dev/aoc/src/main/day2"
 )
 
-func TestPart1(t *testing.T) {
+func TestDay2Part1(t *testing.T) {
 	expected := 150
 	// Given a list of instructions
 	input := []string{
