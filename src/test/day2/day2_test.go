@@ -28,7 +28,7 @@ func TestDay2Part1(t *testing.T) {
 }
 
 func TestDay2Part2(t *testing.T) {
-	expected := 600
+	expected := 900
 	// Given a list of instructions
 	input := []string{
 		"forward 5",

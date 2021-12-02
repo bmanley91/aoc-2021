@@ -57,7 +57,27 @@ func followInstructions(instructions []string) (depth int, horizontal int) {
 }
 
 func followInstructionsWithAim(instructions []string) (depth int, horizontal int) {
-	return
+	aim := 0
+	for _, instruction := range instructions {
+		splitInstruction := strings.Split(instruction, " ")
+
+		switch splitInstruction[directionIndex] {
+		case "forward":
+			horizontal += getAmountFromInstruction(splitInstruction)
+			depth += aim * getAmountFromInstruction(splitInstruction)
+
+		case "up":
+			aim -= getAmountFromInstruction(splitInstruction)
+
+		case "down":
+			aim += getAmountFromInstruction(splitInstruction)
+
+		default:
+			fmt.Printf("Uhhh what? %s", instruction)
+		}
+	}
+
+	return depth, horizontal
 }
 
 func getAmountFromInstruction(instruction []string) int {
