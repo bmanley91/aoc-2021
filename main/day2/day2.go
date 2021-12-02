@@ -5,14 +5,14 @@ import (
 	"strconv"
 	"strings"
 
-	"manley.dev/aoc/src/main/util"
+	"manley.dev/aoc/main/util"
 )
 
 const directionIndex = 0
 const amountIndex = 1
 
 func Solve() {
-	instructions := util.ReadFileForStrings("src/main/day2/data/day-2.txt")
+	instructions := util.ReadFileForStrings("main/day2/data/day-2.txt")
 
 	fmt.Printf("Part 1: %d\n", Part1(instructions))
 	fmt.Printf("Part 2: %d\n", Part2(instructions))

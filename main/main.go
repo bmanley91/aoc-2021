@@ -1,8 +1,8 @@
 package main
 
 import (
-	"manley.dev/aoc/src/main/day1"
-	"manley.dev/aoc/src/main/day2"
+	"manley.dev/aoc/main/day1"
+	"manley.dev/aoc/main/day2"
 )
 
 func main() {
