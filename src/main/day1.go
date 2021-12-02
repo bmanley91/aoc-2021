@@ -9,7 +9,7 @@ import (
 
 func Day1() {
 	// Read data into array
-	depthValues, readError := util.ReadFileForInts("./data/day-1.txt")
+	depthValues, readError := util.ReadFileForInts("./day-1.txt")
 
 	if readError != nil {
 		log.Fatalf("Uh oh!")

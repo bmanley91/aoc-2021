@@ -4,11 +4,13 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strconv"
 )
 
 func ReadFileForInts(path string) ([]int, error) {
-	file, err := os.Open(path)
+	absPath, _ := filepath.Abs(path)
+	file, err := os.Open(absPath)
 	if err != nil {
 		return nil, err
 	}
@@ -30,7 +32,8 @@ func ReadFileForInts(path string) ([]int, error) {
 }
 
 func ReadFileForStrings(path string) ([]string, error) {
-	file, err := os.Open(path)
+	absPath, _ := filepath.Abs(path)
+	file, err := os.Open(absPath)
 	if err != nil {
 		return nil, err
 	}

@@ -12,15 +12,15 @@ import (
 const directionIndex = 0
 const amountIndex = 1
 
-func Day2(path string) {
+func Solve() {
 	// Read data into array
-	instructions, readError := util.ReadFileForStrings(path)
+	instructions, readError := util.ReadFileForStrings("main/day2/data/day-2.txt")
 
 	if readError != nil {
-		log.Fatalf("Uh oh!")
+		log.Fatalf("Uh oh!", readError)
 	}
 
-	fmt.Printf("Part 1: %d", Part1(instructions))
+	fmt.Printf("Part 1: %d\n", Part1(instructions))
 }
 
 func Part1(instructions []string) int {
