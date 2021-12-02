@@ -1,8 +1,11 @@
 package main
 
-import "manley.dev/aoc/src/main/day2"
+import (
+	"manley.dev/aoc/src/main/day1"
+	"manley.dev/aoc/src/main/day2"
+)
 
 func main() {
-	Day1()
+	day1.Solve()
 	day2.Solve()
 }

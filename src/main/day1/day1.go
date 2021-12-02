@@ -1,19 +1,14 @@
-package main
+package day1
 
 import (
 	"fmt"
-	"log"
 
 	"manley.dev/aoc/src/main/util"
 )
 
-func Day1() {
+func Solve() {
 	// Read data into array
-	depthValues, readError := util.ReadFileForInts("./day-1.txt")
-
-	if readError != nil {
-		log.Fatalf("Uh oh!")
-	}
+	depthValues := util.ReadFileForInts("src/main/day1/data/day-1.txt")
 
 	part1(depthValues)
 	part2(depthValues)
