@@ -2,7 +2,8 @@ name: Main
 
 on:
   push:
-    branch: main
+    branches: 
+      - master
 
 jobs:
   build:
