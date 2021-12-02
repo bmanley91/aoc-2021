@@ -1,16 +1,15 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"log"
-	"os"
-	"strconv"
+
+	"manley.dev/aoc/src/main/util"
 )
 
-func main() {
+func Day1() {
 	// Read data into array
-	depthValues, readError := readFile("data.txt")
+	depthValues, readError := util.ReadFileForInts("./day-1.txt")
 
 	if readError != nil {
 		log.Fatalf("Uh oh!")
@@ -58,26 +57,4 @@ func part2(depthValues []int) {
 	}
 
 	fmt.Printf("Number of depth increases: %d\n", depthWindowIncreases)
-}
-
-func readFile(path string) ([]int, error) {
-	file, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-
-	defer file.Close()
-
-	var lines []int
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		intVal, err := strconv.Atoi(scanner.Text())
-		if err != nil {
-			fmt.Println(err)
-		}
-
-		lines = append(lines, intVal)
-	}
-
-	return lines, scanner.Err()
 }
