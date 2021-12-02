@@ -2,17 +2,17 @@ package util
 
 import (
 	"bufio"
-	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"strconv"
 )
 
-func ReadFileForInts(path string) ([]int, error) {
+func ReadFileForInts(path string) []int {
 	absPath, _ := filepath.Abs(path)
 	file, err := os.Open(absPath)
 	if err != nil {
-		return nil, err
+		log.Fatal("Uh oh!", err)
 	}
 
 	defer file.Close()
@@ -22,20 +22,20 @@ func ReadFileForInts(path string) ([]int, error) {
 	for scanner.Scan() {
 		intVal, err := strconv.Atoi(scanner.Text())
 		if err != nil {
-			fmt.Println(err)
+			log.Fatal("Uh oh!", err)
 		}
 
 		lines = append(lines, intVal)
 	}
 
-	return lines, scanner.Err()
+	return lines
 }
 
-func ReadFileForStrings(path string) ([]string, error) {
+func ReadFileForStrings(path string) []string {
 	absPath, _ := filepath.Abs(path)
 	file, err := os.Open(absPath)
 	if err != nil {
-		return nil, err
+		log.Fatal("Uh oh!", err)
 	}
 
 	defer file.Close()
@@ -45,11 +45,11 @@ func ReadFileForStrings(path string) ([]string, error) {
 	for scanner.Scan() {
 
 		if err != nil {
-			fmt.Println(err)
+			log.Fatal("Uh oh!", err)
 		}
 
 		lines = append(lines, scanner.Text())
 	}
 
-	return lines, scanner.Err()
+	return lines
 }

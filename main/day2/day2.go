@@ -2,23 +2,17 @@ package day2
 
 import (
 	"fmt"
-	"log"
 	"strconv"
 	"strings"
 
-	"manley.dev/aoc/src/main/util"
+	"manley.dev/aoc/main/util"
 )
 
 const directionIndex = 0
 const amountIndex = 1
 
 func Solve() {
-	// Read data into array
-	instructions, readError := util.ReadFileForStrings("main/day2/data/day-2.txt")
-
-	if readError != nil {
-		log.Fatalf("Uh oh!", readError)
-	}
+	instructions := util.ReadFileForStrings("main/day2/data/day-2.txt")
 
 	fmt.Printf("Part 1: %d\n", Part1(instructions))
 	fmt.Printf("Part 2: %d\n", Part2(instructions))

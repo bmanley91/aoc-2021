@@ -3,7 +3,7 @@ package day2
 import (
 	"testing"
 
-	"manley.dev/aoc/src/main/day2"
+	"manley.dev/aoc/main/day2"
 )
 
 func TestDay2Part1(t *testing.T) {

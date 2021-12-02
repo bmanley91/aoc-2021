@@ -1,25 +1,20 @@
-package main
+package day1
 
 import (
 	"fmt"
-	"log"
 
-	"manley.dev/aoc/src/main/util"
+	"manley.dev/aoc/main/util"
 )
 
-func Day1() {
+func Solve() {
 	// Read data into array
-	depthValues, readError := util.ReadFileForInts("./day-1.txt")
+	depthValues := util.ReadFileForInts("main/day1/data/day-1.txt")
 
-	if readError != nil {
-		log.Fatalf("Uh oh!")
-	}
-
-	part1(depthValues)
-	part2(depthValues)
+	fmt.Printf("Day 1 Part 1: %d\n", Part1(depthValues))
+	fmt.Printf("Day 1 Part 2: %d\n", Part2(depthValues))
 }
 
-func part1(depthValues []int) {
+func Part1(depthValues []int) int {
 	// Loop through list with two pointers
 	// If value at previous pointer is less than value at current pointer,
 	// increment a running total of depth increases
@@ -37,10 +32,10 @@ func part1(depthValues []int) {
 	}
 
 	// Return running total once we've read all lines
-	fmt.Printf("Number of depth increases: %d\n", depthIncreaseCount)
+	return depthIncreaseCount
 }
 
-func part2(depthValues []int) {
+func Part2(depthValues []int) int {
 	// Each window will share two values so we actually only care about the values around the two shared ones
 	// i.e. looking at the windows [0,1,2] and [1,2,3], we need to compare the values at positions 0 and 3
 	depthWindowIncreases := 0
@@ -56,5 +51,5 @@ func part2(depthValues []int) {
 		current++
 	}
 
-	fmt.Printf("Number of depth increases: %d\n", depthWindowIncreases)
+	return depthWindowIncreases
 }
