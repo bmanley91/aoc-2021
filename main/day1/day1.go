@@ -8,7 +8,7 @@ import (
 
 func Solve() {
 	// Read data into array
-	depthValues := util.ReadFileForInts("main/day1/data/day-1.txt")
+	depthValues := util.ReadFileForInts("day1/data/day-1.txt")
 
 	fmt.Printf("Day 1 Part 1: %d\n", Part1(depthValues))
 	fmt.Printf("Day 1 Part 2: %d\n", Part2(depthValues))

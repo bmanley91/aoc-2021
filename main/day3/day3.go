@@ -8,7 +8,7 @@ import (
 )
 
 func Solve() {
-	readings := util.ReadFileForStrings("main/day2/data/day-2.txt")
+	readings := util.ReadFileForStrings("day3/data/day-3.txt")
 	fmt.Printf("Day 3 Part 1: %d\n", Part1(readings))
 }
 
@@ -50,9 +50,6 @@ func findGammaAndEpsilon(sumArray []int, entryCount int) (gamma int, epsilon int
 		}
 	}
 
-	fmt.Println("Most Common ", mostCommon)
-	fmt.Println("Least Common ", leastCommon)
-
 	for i := 0; i < len(mostCommon); i++ {
 		if mostCommon[i] == 1 {
 			gamma += int(math.Pow(2, float64(len(mostCommon)-i-1)))
@@ -62,9 +59,6 @@ func findGammaAndEpsilon(sumArray []int, entryCount int) (gamma int, epsilon int
 			epsilon += int(math.Pow(2, float64(len(mostCommon)-i-1)))
 		}
 	}
-
-	fmt.Println("Gamma: ", gamma)
-	fmt.Println("Epsilon: ", epsilon)
 
 	return gamma, epsilon
 }

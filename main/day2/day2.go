@@ -12,7 +12,7 @@ const directionIndex = 0
 const amountIndex = 1
 
 func Solve() {
-	instructions := util.ReadFileForStrings("main/day2/data/day-2.txt")
+	instructions := util.ReadFileForStrings("day2/data/day-2.txt")
 
 	fmt.Printf("Day 2 Part 1: %d\n", Part1(instructions))
 	fmt.Printf("Day 2 Part 2: %d\n", Part2(instructions))
