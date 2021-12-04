@@ -98,11 +98,8 @@ func parseBoard(raw string) Board {
 }
 
 func findFirstWinner(draws []int, boards []Board) (winner Board, lastDraw int) {
-	bs := make([]Board, len(boards))
-	copy(bs, boards)
-
 	for _, currentDraw := range draws {
-		for _, currentBoard := range bs {
+		for _, currentBoard := range boards {
 			currentBoard.mark(currentDraw)
 			if currentBoard.isWinner() {
 				return currentBoard, currentDraw
