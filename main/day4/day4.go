@@ -17,21 +17,27 @@ type cell struct {
 	called bool
 }
 
-type board struct {
+type Board struct {
 	b [][]cell
 }
 
 func Solve() {
-	fmt.Println("Day 4 Part 1", Part1())
+	draws, boards := ProcessInput("day4/data/day-4.txt")
+	fmt.Println("Day 4 Part 1: ", Part1(draws, boards))
+	fmt.Println("Day 4 Part 2: ", Part2(draws, boards))
 }
 
-func Part1() int {
-	draws, boards := processInput("day4/data/day-4.txt")
+func Part1(draws []int, boards []Board) int {
 	firstWinner, lastDraw := findFirstWinner(draws, boards)
 	return firstWinner.score(lastDraw)
 }
 
-func processInput(path string) (draws []int, boards []board) {
+func Part2(draws []int, boards []Board) int {
+	lastWinner, lastDraw := findLastWinner(draws, boards)
+	return lastWinner.score(lastDraw)
+}
+
+func ProcessInput(path string) (draws []int, boards []Board) {
 	absPath, _ := filepath.Abs(path)
 	file, err := os.ReadFile(absPath)
 	if err != nil {
@@ -64,8 +70,8 @@ func parseDraws(input string) []int {
 	return draws
 }
 
-func parseBoards(blocks []string) []board {
-	boards := make([]board, len(blocks))
+func parseBoards(blocks []string) []Board {
+	boards := make([]Board, len(blocks))
 	for i, s := range blocks {
 		board := parseBoard(s)
 		boards[i] = board
@@ -73,7 +79,7 @@ func parseBoards(blocks []string) []board {
 	return boards
 }
 
-func parseBoard(raw string) board {
+func parseBoard(raw string) Board {
 	rows := strings.Split(raw, "\n")
 	b := make([][]cell, size)
 	for i := 0; i < size; i++ {
@@ -88,11 +94,11 @@ func parseBoard(raw string) board {
 			b[i][j] = cell{num: num}
 		}
 	}
-	return board{b: b}
+	return Board{b: b}
 }
 
-func findFirstWinner(draws []int, boards []board) (winner board, lastDraw int) {
-	bs := make([]board, len(boards))
+func findFirstWinner(draws []int, boards []Board) (winner Board, lastDraw int) {
+	bs := make([]Board, len(boards))
 	copy(bs, boards)
 
 	for _, currentDraw := range draws {
@@ -103,10 +109,35 @@ func findFirstWinner(draws []int, boards []board) (winner board, lastDraw int) {
 			}
 		}
 	}
-	return board{}, -1
+
+	// Default, should never happen?
+	return Board{}, -1
 }
 
-func (board board) mark(val int) {
+func findLastWinner(draws []int, boards []Board) (winner Board, lastDraw int) {
+	currentBoardArray := make([]Board, len(boards))
+	copy(currentBoardArray, boards)
+
+	for _, currentDraw := range draws {
+		nextBoardArray := []Board{}
+		for _, currentBoard := range currentBoardArray {
+			currentBoard.mark(currentDraw)
+			if len(currentBoardArray) == 1 && currentBoard.isWinner() {
+				return currentBoard, currentDraw
+			} else {
+				if !currentBoard.isWinner() {
+					nextBoardArray = append(nextBoardArray, currentBoard)
+				}
+			}
+		}
+		currentBoardArray = nextBoardArray
+	}
+
+	// Default, shouldn't happen?
+	return Board{}, -1
+}
+
+func (board Board) mark(val int) {
 	for i := range board.b {
 		for j := range board.b[i] {
 			if board.b[i][j].num == val {
@@ -116,7 +147,7 @@ func (board board) mark(val int) {
 	}
 }
 
-func (board board) isWinner() bool {
+func (board Board) isWinner() bool {
 	// Check rows
 	for i := 0; i < size; i++ {
 		w := true
@@ -140,7 +171,7 @@ func (board board) isWinner() bool {
 	return false
 }
 
-func (board board) score(lastDraw int) int {
+func (board Board) score(lastDraw int) int {
 	var s int
 	for i := range board.b {
 		for j := range board.b[i] {
