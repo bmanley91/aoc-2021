@@ -10,6 +10,7 @@ import (
 func Solve() {
 	readings := util.ReadFileForStrings("day3/data/day-3.txt")
 	fmt.Printf("Day 3 Part 1: %d\n", Part1(readings))
+	fmt.Printf("Day 3 Part 2: %d\n", Part2(readings))
 }
 
 func Part1(input []string) int {
@@ -31,6 +32,28 @@ func Part1(input []string) int {
 	gamma, epsilon := findGammaAndEpsilon(sums, len(input))
 
 	return gamma * epsilon
+}
+
+func Part2(input []string) int {
+	// Find most common like in Part1
+	sums := make([]int, len(input[0]))
+	for _, reading := range input {
+		for index, char := range reading {
+			if char == '1' {
+				sums[index]++
+			}
+		}
+	}
+
+	mostCommon := make([]int, len(sums))
+	for index, value := range sums {
+		mostCommon[index] = int(math.Round(float64(value) / float64(len(input))))
+	}
+	fmt.Println("Most common ", mostCommon)
+
+	findOxygenRating(input, mostCommon)
+
+	return 0
 }
 
 // Gamma binary value is the most common bits
@@ -61,4 +84,25 @@ func findGammaAndEpsilon(sumArray []int, entryCount int) (gamma int, epsilon int
 	}
 
 	return gamma, epsilon
+}
+
+func findOxygenRating(inputData []string, mostCommonBits []int) {
+	recordsToKeep := make([]string, len(inputData))
+	for recordIndex, data := range inputData {
+		shouldAdd := true
+		for index, bit := range inputData[recordIndex] {
+			if mostCommonBits[index] != int(bit-'0') {
+				fmt.Printf("Kicking out %s because of position %d. %s does not match %s\n",
+					data, index, mostCommonBits[index], int(bit-'0'))
+				shouldAdd = false
+				break
+			}
+		}
+
+		if shouldAdd {
+			recordsToKeep = append(recordsToKeep, data)
+		}
+	}
+
+	fmt.Println("this? ", recordsToKeep)
 }
