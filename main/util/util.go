@@ -44,7 +44,6 @@ func ReadFileForStrings(path string) []string {
 	var lines []string
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-
 		if err != nil {
 			log.Fatal("Uh oh!", err)
 		}
@@ -59,4 +58,9 @@ func AssertAnswer(expected int, actual int, t *testing.T) {
 	if actual != expected {
 		t.Errorf("Incorrect answer. Expected %d, got %d", expected, actual)
 	}
+}
+
+func StringToInt(input string) int {
+	result, _ := strconv.Atoi(input)
+	return result
 }
