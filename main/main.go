@@ -5,6 +5,7 @@ import (
 	"manley.dev/aoc/main/day2"
 	"manley.dev/aoc/main/day3"
 	"manley.dev/aoc/main/day4"
+	"manley.dev/aoc/main/day5"
 )
 
 func main() {
@@ -12,4 +13,5 @@ func main() {
 	day2.Solve()
 	day3.Solve()
 	day4.Solve()
+	day5.Solve()
 }
