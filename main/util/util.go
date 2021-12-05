@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+	"testing"
 )
 
 func ReadFileForInts(path string) []int {
@@ -52,4 +53,10 @@ func ReadFileForStrings(path string) []string {
 	}
 
 	return lines
+}
+
+func AssertAnswer(expected int, actual int, t *testing.T) {
+	if actual != expected {
+		t.Errorf("Incorrect answer. Expected %d, got %d", expected, actual)
+	}
 }
