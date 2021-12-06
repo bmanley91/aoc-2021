@@ -3,6 +3,7 @@ package day5
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"math"
 	"os"
 	"path/filepath"
@@ -33,8 +34,7 @@ const (
 func Solve() {
 	lines, err := ParseInputIntoLines("day5/data/day-5.txt")
 	if err != nil {
-		fmt.Errorf("Couldn't read file ", err)
-		os.Exit(1)
+		log.Fatalf("Couldn't read file %v", err)
 	}
 
 	fmt.Println("Day 5 Part 1: ", Part1(lines))
@@ -119,8 +119,7 @@ func Part1(lines []line) (overlaps int) {
 		case Diagonal:
 			continue
 		default:
-			fmt.Errorf("Invalid line ", line)
-			os.Exit(1)
+			log.Fatalf("Invalid line %v", line)
 		}
 	}
 
@@ -189,8 +188,7 @@ func Part2(lines []line) (overlaps int) {
 			}
 
 		default:
-			fmt.Errorf("Invalid line ", line)
-			os.Exit(1)
+			log.Fatalf("Invalid line %v", line)
 		}
 	}
 
