@@ -99,11 +99,3 @@ func initializeCounter(fishList []int) map[int]int {
 
 	return counterMap
 }
-
-func sum(counter map[int]int) int {
-	count := 0
-	for _, val := range counter {
-		count += val
-	}
-	return count
-}
