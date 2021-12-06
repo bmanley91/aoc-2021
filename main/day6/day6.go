@@ -46,7 +46,6 @@ func ParseInputIntoFish(path string) (fishList []int, err error) {
 		}
 	}
 
-	// fmt.Printf("Initial fish list %v\n", fishList)
 	return fishList, nil
 }
 
@@ -55,40 +54,10 @@ func Part1(fishList []int) int {
 }
 
 func Part2(fishList []int) int {
-	return findFishCountBetter(fishList, 256)
+	return findFishCount(fishList, 256)
 }
 
-func findFishCount(fishList []int, days int) int {
-	for currentDay := 0; currentDay < days; currentDay++ {
-		var newFishList []int
-		// Iterate over each fish
-		for index, currentFish := range fishList {
-			if currentFish == 0 {
-				// Spawn Case
-				// Create new fish and add it to the new fish list
-				newFish := initialDaysToSpawn + newFishExtraDaysToSpawn
-				newFishList = append(newFishList, newFish)
-
-				// Reset current fish's days until next spawn
-				fishList[index] = initialDaysToSpawn
-			} else {
-				// Non-Spawn Case
-				// Decrement days until next spawn
-				// fmt.Printf("Decrementing fish %v\n", currentFish)
-				currentFish -= 1
-				fishList[index] = currentFish
-				// fmt.Printf("Updated fish %v\n", currentFish)
-			}
-		}
-
-		fishList = append(fishList, newFishList...)
-		// fmt.Printf("Current day: %v, Current count: %v\n", currentDay, len(fishList))
-	}
-
-	return len(fishList)
-}
-
-func findFishCountBetter(fishList []int, days int) (sum int) {
+func findFishCount(fishList []int, days int) (sum int) {
 	counter := initializeCounter(fishList)
 
 	for currentDay := 0; currentDay < days; currentDay++ {
@@ -108,8 +77,6 @@ func findFishCountBetter(fishList []int, days int) (sum int) {
 		}
 		counter = nextCounter
 	}
-
-	fmt.Printf("counter: %v\n", counter)
 
 	// Iterate through the map and sum up all the values
 	for _, value := range counter {
