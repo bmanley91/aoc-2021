@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math"
 
-	"manley.dev/aoc/main/util"
+	"manley.dev/aoc/util"
 )
 
 func Solve() {

@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"manley.dev/aoc/main/util"
+	"manley.dev/aoc/util"
 )
 
 const directionIndex = 0

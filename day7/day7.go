@@ -10,7 +10,7 @@ import (
 	"sort"
 	"strings"
 
-	"manley.dev/aoc/main/util"
+	"manley.dev/aoc/util"
 )
 
 func Solve() {

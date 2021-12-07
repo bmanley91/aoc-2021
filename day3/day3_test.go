@@ -2,8 +2,6 @@ package day3
 
 import (
 	"testing"
-
-	"manley.dev/aoc/main/day3"
 )
 
 func TestDay3Part1(t *testing.T) {
@@ -25,7 +23,7 @@ func TestDay3Part1(t *testing.T) {
 	}
 
 	// When we calculate the answer
-	answer := day3.Part1(input)
+	answer := Part1(input)
 
 	// Then it matches the expected value
 	if answer != expected {

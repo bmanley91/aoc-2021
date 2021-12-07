@@ -3,7 +3,7 @@ package day1
 import (
 	"fmt"
 
-	"manley.dev/aoc/main/util"
+	"manley.dev/aoc/util"
 )
 
 func Solve() {

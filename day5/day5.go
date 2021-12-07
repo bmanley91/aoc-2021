@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"manley.dev/aoc/main/util"
+	"manley.dev/aoc/util"
 )
 
 type line struct {

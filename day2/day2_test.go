@@ -2,8 +2,6 @@ package day2
 
 import (
 	"testing"
-
-	"manley.dev/aoc/main/day2"
 )
 
 func TestDay2Part1(t *testing.T) {
@@ -19,7 +17,7 @@ func TestDay2Part1(t *testing.T) {
 	}
 
 	// When we follow the instructions
-	answer := day2.Part1(input)
+	answer := Part1(input)
 
 	// Then we get the correct depth and height
 	if answer != expected {
@@ -40,7 +38,7 @@ func TestDay2Part2(t *testing.T) {
 	}
 
 	// When we follow the instructions
-	answer := day2.Part2(input)
+	answer := Part2(input)
 
 	// Then we get the correct depth and height
 	if answer != expected {
