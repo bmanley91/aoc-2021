@@ -19,7 +19,7 @@ func Solve() {
 	}
 
 	fmt.Printf("Day 9 Part 1: %d\n", Part1(heights))
-	fmt.Printf("Day 9 Part 2: %d\n", Part2(heights))
+	// fmt.Printf("Day 9 Part 2: %d\n", Part2(heights))
 }
 
 func ParseInput(path string) ([][]int, error) {
@@ -62,7 +62,23 @@ func Part2(heights [][]int) int {
 	// This is the island area problem except we need to check
 	// adjacent point values <= current point value
 	// Also we need to keep track of the top three sizes
-	return -1
+	largestBasinSizes := make([]int, 3)
+
+	// Keep track of what we've already visited
+	// visited := make([][]bool, len(heights), len(heights[0]))
+	countedInBasin := make([][]bool, len(heights), len(heights[0]))
+
+	for row := 0; row < len(heights); row++ {
+		for col := 0; col < len(heights[0]); col++ {
+			if !countedInBasin[row][col] &&
+				heights[row][col] != 9 {
+				traverseBasin(heights, row, col, heights[row][col], countedInBasin)
+
+			}
+		}
+	}
+
+	return sumBasinSizes(largestBasinSizes)
 }
 
 func isLowPoint(heights [][]int, row int, col int) bool {
@@ -92,4 +108,24 @@ func calculateRiskScore(heights [][]int, row int, col int) int {
 	// 	heights[row][col]+1,
 	// )
 	return heights[row][col] + 1
+}
+
+func traverseBasin(heights [][]int, row int, col int, prevHeight int, countedInBasin [][]bool) int {
+	currentHeight := heights[row][col]
+	// If this is lower at the same height as the previous height,
+	// then we're in the same basin
+	// and we should check if other adjacent points are as well.
+	if currentHeight <= prevHeight {
+		countedInBasin[row][col] = true
+
+	}
+
+	return -1
+}
+
+func sumBasinSizes(basinSizes []int) (sum int) {
+	for _, size := range basinSizes {
+		sum += size
+	}
+	return sum
 }

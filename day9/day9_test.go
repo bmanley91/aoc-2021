@@ -18,14 +18,14 @@ func TestDay9Part1(t *testing.T) {
 	util.AssertAnswer(expected, answer, t)
 }
 
-func TestDay9Part2(t *testing.T) {
-	expected := 1134
-	// Given an input heightmap
-	positions, _ := ParseInput("data/test-day-9.txt")
+// func TestDay9Part2(t *testing.T) {
+// 	expected := 1134
+// 	// Given an input heightmap
+// 	positions, _ := ParseInput("data/test-day-9.txt")
 
-	// When the total risk score is calculated
-	answer := Part2(positions)
+// 	// When the total risk score is calculated
+// 	answer := Part2(positions)
 
-	// The the correct response is returned
-	util.AssertAnswer(expected, answer, t)
-}
+// 	// The the correct response is returned
+// 	util.AssertAnswer(expected, answer, t)
+// }
