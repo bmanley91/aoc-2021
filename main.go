@@ -8,6 +8,7 @@ import (
 	"manley.dev/aoc/day5"
 	"manley.dev/aoc/day6"
 	"manley.dev/aoc/day7"
+	"manley.dev/aoc/day9"
 )
 
 func main() {
@@ -18,4 +19,6 @@ func main() {
 	day5.Solve()
 	day6.Solve()
 	day7.Solve()
+	// day8.Solve()
+	day9.Solve()
 }
