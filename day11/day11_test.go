@@ -17,3 +17,15 @@ func TestDay11Part1(t *testing.T) {
 	// The the correct response is returned
 	util.AssertAnswer(expected, flashes, t)
 }
+
+func TestDay11Part2(t *testing.T) {
+	expected := 195
+	// Given an input grid
+	lines, _ := ParseInput("data/test-day-11.txt")
+
+	// When the synchronization round is found
+	rounds := Part2(lines)
+
+	// The the correct response is returned
+	util.AssertAnswer(expected, rounds, t)
+}
