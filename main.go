@@ -3,6 +3,7 @@ package main
 import (
 	"manley.dev/aoc/day1"
 	"manley.dev/aoc/day10"
+	"manley.dev/aoc/day11"
 	"manley.dev/aoc/day2"
 	"manley.dev/aoc/day3"
 	"manley.dev/aoc/day4"
@@ -23,4 +24,5 @@ func main() {
 	// day8.Solve()
 	day9.Solve()
 	day10.Solve()
+	day11.Solve()
 }
